@@ -23,6 +23,7 @@ ipython_config.py
 # Logs
 logs
 *.log
+ml-env/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
