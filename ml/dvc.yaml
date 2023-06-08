@@ -1,25 +1,23 @@
 stages:
-  download:
-    cmd: python code/0_download.py
-    deps:
-      - code/0_download.py
-      - https://calcofi.org/downloads/database/CalCOFI_Database_194903-202001_csv_22Sep2021.zip
-    outs:
-      - data/downloaded
   prepare:
-    cmd: python code/1_prepare.py
+    cmd: python src/00_prepare.py
     deps:
-      - code/1_prepare.py
-      - data/downloaded
+      - src/00_prepare.py
     outs:
-      - data/prepared
-  train: 
-    cmd: python code/2_train.py
+      - data
+  train:
+    cmd: python src/01_train.py
     deps:
-      - code/2_train.py
-      - data/prepared
+      - src/00_prepare.py
     outs:
+      - metrics/train
       - model
+  evaluate: 
+    cmd: python src/02_evaluate.py
+    deps:
+      - src/02_evaluate.py
+    outs:
+      - metrics/validation
+      - plots
 plots:
-  - data/prepared/TempSal.png
-  - data/model/TempSal.png
+  - data
