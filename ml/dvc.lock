@@ -4,10 +4,21 @@ stages:
     cmd: python src/00_prepare.py
     deps:
     - path: src/00_prepare.py
-      md5: 2fb24c580509280188f78472d38dcb77
-      size: 372
+      md5: 4a9bb4f05e2baeb3730c737d79b46d41
+      size: 420
     outs:
     - path: data
       md5: 1c3f56255f428ba5c49d83b2df7d1168.dir
       size: 5056
       nfiles: 2
+  train:
+    cmd: python src/01_train.py
+    deps:
+    - path: src/00_prepare.py
+      md5: 4a9bb4f05e2baeb3730c737d79b46d41
+      size: 420
+    outs:
+    - path: model
+      md5: 6208d2425e96bcc25c6a0f4fcc9dc704.dir
+      size: 7805
+      nfiles: 1
