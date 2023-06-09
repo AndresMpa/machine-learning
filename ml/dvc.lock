@@ -18,7 +18,11 @@ stages:
       md5: 4a9bb4f05e2baeb3730c737d79b46d41
       size: 420
     outs:
+    - path: metrics/train
+      md5: dee5ded4c24b72d75d919ab0ced364e9.dir
+      size: 343
+      nfiles: 1
     - path: model
-      md5: 6208d2425e96bcc25c6a0f4fcc9dc704.dir
-      size: 7805
+      md5: 5c6931113377ff1ed33ad82d6b793bff.dir
+      size: 7782
       nfiles: 1
