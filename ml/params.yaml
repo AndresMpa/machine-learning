@@ -6,7 +6,8 @@
 "output_layers": 1
 
 "learning_rate": 0.01
-"epochs": 20000000
+"epochs": 100000
 
 "data_dir": "data/"
 "model_dir": "model/"
+"train_data_dir": "metrics/train/"
