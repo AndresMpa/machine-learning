@@ -1,5 +1,8 @@
 # OS dependencies
-import json, codecs
+from params import MODEL_DIR
+from utilities import write_file
+import json
+import codecs
 import sys
 import os
 
@@ -15,8 +18,7 @@ parent = os.path.dirname(current)
 sys.path.append(parent)
 
 # Upper level requirements
-from utilities import write_file
-from params import MODEL_DIR
+
 
 class Simple:
     def __init__(self, num_inputs, num_hidden, num_outputs):
@@ -25,6 +27,12 @@ class Simple:
         self.W2 = np.random.randn(num_hidden, num_outputs)
         self.b2 = np.zeros((1, num_outputs))
         self.loss = []
+
+    def set_weigths(W1, b1, W2, b2):
+        self.W1 = W1
+        self.b1 = b1
+        self.W2 = W2
+        self.b2 = b2
 
     def binary_cross_entropy(self, y, y_hat):
         m = y.shape[0]
@@ -71,6 +79,9 @@ class Simple:
         }
         write_file(weigths, MODEL_DIR, "model.json")
 
+    def get_loss(self):
+        return [self.loss, len(self.loss)]
+
     def train(self, X, y, epochs, lr):
         y = y.reshape(-1, 1)
 
@@ -94,7 +105,7 @@ class Simple:
             self.update_parameters(dW1, db1, dW2, db2, lr)
             self.keep_weights()
             if epoch % 100 == 0:
-                self.loss.push(self.binary_cross_entropy(y, y_hat))
+                self.loss.append(self.binary_cross_entropy(y, y_hat))
                 print(f"Epoch: {epoch}, loss: {self.loss[-1]}")
                 # Update decision boundary
                 Z = self.predict(np.c_[xx.ravel(), yy.ravel()])
