@@ -13,3 +13,4 @@ EPOCHS = get_params("epochs")
 
 DATA_DIR = get_params("data_dir")
 MODEL_DIR = get_params("model_dir")
+TRAIN_DATA_DIR = get_params("train_data_dir")
