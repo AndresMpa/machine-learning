@@ -1,4 +1,4 @@
-from params import LEARNING_RATE, DATA_DIR, TEST_PERCENTAGE, VALIDATION_PERCENTAGE, HIDDEN_LAYERS, OUTPUT_LAYERS, EPOCHS
+from params import LEARNING_RATE, DATA_DIR, TEST_PERCENTAGE, VALIDATION_PERCENTAGE, HIDDEN_LAYERS, OUTPUT_LAYERS, EPOCHS, TRAIN_DATA_DIR
 from sklearn.model_selection import train_test_split
 from anns.neuronal_network import Simple
 from utilities import write_file
