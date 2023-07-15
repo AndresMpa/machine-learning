@@ -33,9 +33,13 @@ metrics_data = {
 # Keeping data
 write_file(metrics_data, TRAIN_DATA_DIR, "train.json")
 
+print(X_test_validation)
+
 np.save(f"{DATA_DIR}X_test_validation.npy", X_test_validation)
 np.save(f"{DATA_DIR}y_test_validation.npy", y_test_validation)
 np.save(f"{DATA_DIR}X_validation.npy", X_validation)
 np.save(f"{DATA_DIR}y_validation.npy", y_validation)
+np.save(f"{DATA_DIR}X_train.npy", X_train)
+np.save(f"{DATA_DIR}y_train.npy", y_train)
 np.save(f"{DATA_DIR}X_test.npy", X_test)
 np.save(f"{DATA_DIR}y_test.npy", y_test)

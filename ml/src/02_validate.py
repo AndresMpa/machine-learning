@@ -1,20 +1,22 @@
 from params import HIDDEN_LAYERS, OUTPUT_LAYERS, DATA_DIR, TRAIN_DATA_DIR
 from utilities import read_numpy_like_json
 from anns.neuronal_network import Simple
+import numpy as np
 
 
 # Keeping data
 train_metrics = read_numpy_like_json(f"{TRAIN_DATA_DIR}train.json")
-print(train_metrics)
 
-nn = Simple(num_inputs, HIDDEN_LAYERS, OUTPUT_LAYERS)
+nn = Simple(train_metrics["number_of_inputs"], HIDDEN_LAYERS, OUTPUT_LAYERS)
 
-X_test_validation = np.load(f"{DATA_DIR}X_test_validation.npy", X_test_validation)
-y_test_validation = np.load(f"{DATA_DIR}y_test_validation.npy", y_test_validation)
-X_validation = np.load(f"{DATA_DIR}X_validation.npy", X_validation)
-y_validation = np.load(f"{DATA_DIR}y_validation.npy", y_validation)
-X_test = np.load(f"{DATA_DIR}X_test.npy", X_test)
-y_test = np.load(f"{DATA_DIR}y_test.npy", y_test)
+X_test_validation = np.load(f"{DATA_DIR}X_test_validation.npy")
+y_test_validation = np.load(f"{DATA_DIR}y_test_validation.npy")
+X_validation = np.load(f"{DATA_DIR}X_validation.npy")
+y_validation = np.load(f"{DATA_DIR}y_validation.npy")
+X_train = np.load(f"{DATA_DIR}X_train.npy")
+y_train = np.load(f"{DATA_DIR}y_train.npy")
+X_test = np.load(f"{DATA_DIR}X_test.npy")
+y_test = np.load(f"{DATA_DIR}y_test.npy")
 
 y_pred_train = nn.predict(X_train)
 train_accuracy = np.mean(y_pred_train == y_train.reshape(-1, 1))

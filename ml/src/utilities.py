@@ -57,8 +57,7 @@ Read a Json like file
 
 
 def read_numpy_like_json(file_path):
-    content = codecs.open(f"{ROOT_PATH}{file_path}", 'r', encoding='utf-8').read()
-    raw_content = json.loads(content)
-    array = np.array(raw_content)
+    raw_content = codecs.open(f"{ROOT_PATH}{file_path}", 'r', encoding='utf-8').read()
+    content = json.loads(raw_content)
 
-    return array
+    return content

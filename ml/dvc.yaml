@@ -12,12 +12,20 @@ stages:
     outs:
       - metrics/train
       - model
-  evaluate: 
-    cmd: python src/02_evaluate.py
+  validate: 
+    cmd: python src/02_validate.py
     deps:
-      - src/02_evaluate.py
+      - src/00_prepare.py
+      - src/01_train.py
     outs:
       - metrics/validation
       - plots
+  #evaluate: 
+    #cmd: python src/03_evaluate.py
+    #deps:
+      #- src/02_evaluate.py
+    #outs:
+      #- metrics/validation
+      #- plots
 plots:
   - data
